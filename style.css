@@ -1,0 +1,263 @@
+/* 0.Animation design */
+
+/* Minimalistic pulse for links */
+
+    @keyframes pulse{
+        0%{text-shadow: 0px 1px 5px rgba(0,0,0,0.5)}
+        100%{text-shadow: 0px 1px 5px rgba(0,0,0,0.1)}
+    }
+
+    p.expand-block button:read-only{ /* [+] */
+        animation: pulse .5s linear infinite both alternate
+    }
+
+/* 1.Structural desing */
+
+/* Background formatting */
+
+    body{
+        /* Text settings */
+        font-family: Consolas, monospace;
+        color: darkslategrey;
+        
+        /* Background */
+        background-color: #000000;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23222222' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%23444444' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%23666666' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%23888888' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23aaaaaa' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+        background-attachment: fixed;
+        background-size: cover;
+        /* background by SVGBackgrounds.com */
+    }
+
+/* General from-scratch element formatting */
+
+    h1, h2, h3, h4, h5, h6{ /* Headers */
+        font-size: 1.75em;
+        font-weight: 700
+    }
+
+    b{ /* Bold text */
+        font-weight: 700
+    }
+
+    a, a:visited{ /* Plain links */
+        text-decoration: none;
+        color: inherit
+    }
+
+    body{ /* Base for non-static positions */
+        position: relative
+    }
+
+    button{ /* Button style adaptation */
+        width: inherit;
+        height: inherit;
+        color: inherit;
+        background-color: inherit;
+        outline: inherit;
+        border: inherit;
+        box-shadow: inherit;
+        font: inherit
+    }
+
+/* "m-c-b" and "s-c-b" (main/second-content-blocks) formatting */
+
+    div.main, div.secondary{ /* Default state */
+        margin: 50px 150px;
+        padding: 40px;
+        padding-bottom: 20px;
+        border: rgb(180, 180, 200) 5px solid;
+        border-radius: 15px;
+        box-shadow: 0px 10px 3px rgb(120, 120, 140, .7);
+        text-shadow: lightgray 2px 2px 3px;
+        background-color: azure
+    }
+
+    div.secondary{ /* Size adaptation */
+        margin: 40px 20px;
+    }
+
+    section.main h1, /* Size adaptation */
+    section.secondary h1,
+    section.main h2,
+    section.secondary h2,
+    section.main p,
+    section.secondary p{
+        margin-bottom: 25px
+    }
+
+    p.expand-block button{ /* Size adaptation */
+        display: inline-flex;
+        width: auto;
+        padding: 4px 8px;
+        border: rgb(180, 180, 200) 2px solid;
+        border-radius: 60px;
+        box-shadow: 2px 4px 0px rgb(120, 120, 140, .7);
+        text-align: center;
+        transition: .25s ease-out 
+    }
+
+    p.expand-block button:hover{
+        box-shadow: 0px 0px;
+        transform: translateY(4px) translateX(2px)
+    }
+
+    p.expand-block button:active{
+        border-image: linear-gradient(135deg, rgba(120, 120, 140, .7), 50%, transparent) 100% stretch;
+        border-bottom: none;
+        border-width: 1px;
+        box-shadow: -2px -4px 0px rgb(120, 120, 140, .7);
+        transform: translateX(2px) translateY(4px)
+    }
+
+/* Division transition */
+
+    div.main, /* Default state */
+    div.secondary{
+        transition: .75s cubic-bezier(.89,-0.62,.38,1.08) 50ms
+    }
+
+    div.main:hover, /* Pseudo-state */
+    div.secondary:hover{
+        box-shadow: 15px 15px 3px rgb(120, 120, 140, .7);
+        color: black;
+        transform: translateX(-20px) translateY(-10px)
+    }
+
+/* Title transition */
+
+    div.main h1, /* Default state */
+    div.secondary h1,
+    div.main h2,
+    div.secondary h2{
+        display: inline-flex;
+        border: azure 1px solid;
+        border-radius: 5px;
+        transition: .75s cubic-bezier(.89,-0.62,.38,1.08) 50ms
+    }
+
+    div.main:hover section.main h1, /* Pseudo-state */
+    div.secondary:hover section.secondary h1,
+    div.main:hover section.main h2,
+    div.secondary:hover section.secondary h2{
+        margin-top: -20px;
+        padding: 10px 20px;
+        border: rgb(180, 180, 200) 5px solid;
+        border-radius: 15px;
+        box-shadow: 10px 10px 3px rgb(120, 120, 140, .7);
+        color: black;
+        transform: translateX(-10px)
+    }
+
+/* "inverted-area" division */
+
+    div.inverted-area{
+        /* Structure */
+        padding: 1px;
+        border: black solid 10px;
+        border-left: none;
+        border-right: none;
+        border-image: url(grad.png) 90 stretch;
+        
+        /* Background */
+        background-color: #989898;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%237a7a7a' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%235b5b5b' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%233d3d3d' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%231e1e1e' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23000000' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+        background-attachment: fixed;
+        background-size: cover;
+        /* background by SVGBackgrounds.com */
+    }
+
+/* "top-row" header */
+
+    div.top-row{
+        display: flex;
+        width: auto;
+        height: 60px;
+        border: rgb(180, 180, 200) 5px solid;
+        border-top: none;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        box-shadow: 0px 10px 0px rgb(100, 100, 120);
+        color: black;
+        background-color: azure
+    }
+
+    span.top-row{
+        display: inline-flex;
+        margin: auto
+    }
+
+    span.top-row a, span.top-row button{
+        margin: 0px 50px;
+        padding: 4px 8px;
+        border: rgb(180, 180, 200) 2px solid;
+        border-radius: 60px;
+        box-shadow: 0px 3px 0px rgba(120, 120, 140, .7);
+        text-align: center;
+        font-weight: 700;
+        transition: .1s ease-out
+    }
+
+    span.top-row a:hover,
+    span.top-row button:hover{
+        box-shadow: 0px 0px;
+        transform: translateY(3px);
+    }
+
+    span.top-row a:active,
+    span.top-row button:active{
+        border-image: linear-gradient(180deg, rgba(120, 120, 140, .7), 50%, transparent) 100% stretch;
+        border-bottom: none;
+        border-width: 1px;
+        box-shadow: 0px -3px 0px rgb(120, 120, 140, .7);
+        transform: translateY(6px);
+    }
+
+
+/* "bottom-row" footer */
+
+    div.bottom-row{
+        /* Structure */
+        position: static;
+        height: 1000px;
+        border: rgb(180, 180, 200) 20px solid;
+        border-bottom: none;
+        border-radius: 15px;
+        box-shadow: 0px -10px 0px rgb(100, 100, 120);
+        color: black;
+
+        /* Background */
+        background-color: #989898;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%237a7a7a' points='1600 160 0 460 0 350 1600 50'/%3E%3Cpolygon fill='%235b5b5b' points='1600 260 0 560 0 450 1600 150'/%3E%3Cpolygon fill='%233d3d3d' points='1600 360 0 660 0 550 1600 250'/%3E%3Cpolygon fill='%231e1e1e' points='1600 460 0 760 0 650 1600 350'/%3E%3Cpolygon fill='%23000000' points='1600 800 0 800 0 750 1600 450'/%3E%3C/g%3E%3C/svg%3E");
+        background-attachment: fixed;
+        background-size: cover;
+        /* background by SVGBackgrounds.com */
+    }
+
+/* 2.Miscellaneous */
+
+
+
+/* 3.Testing area */
+
+
+div.secondary{
+    display:
+}
+
+section.main button:active,
+section.main button:visited,
+section.main button:enabled{
+    display: contents;
+}
+
+div.expand-block .checkbox:checked{
+    background-color: black
+}
+
+.checkbox:checked ~ .secondary{
+    background-color: yellow;
+}
+
+.checkbox{
+    ;
+}
